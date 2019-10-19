@@ -1,0 +1,414 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Client.master.cs" Inherits="Client" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<meta http-equiv="x-ua-compatible" content="ie=edge">-->
+
+    <title>Adventurer</title>
+
+     <!-- Font Awesome -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,300,300italic,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+        <!-- Material Design Bootstrap -->
+        <link href="css/materialize.css" rel="stylesheet">
+
+        <!-- Magnific-popup css -->
+        <link href="css/magnific-popup.css" rel="stylesheet">
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Material Design Bootstrap -->
+        <!--<link href="css/progressbar.css" rel="stylesheet">-->
+
+        <!-- Material Design Bootstrap -->
+        <link href="css/mdb.min.css" rel="stylesheet">
+
+
+
+        <!-- Your custom styles (optional) -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet">
+
+
+
+
+    
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body data-spy="scroll" data-target=".navbar-desktop">
+
+
+    <!-- Start your project here-->
+    <!--Navbar-->
+
+    <div class='preloader'>
+        <div class='loaded'>&nbsp;</div>
+    </div>
+
+    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+        <!--Collapse button-->
+        <div class="container">
+            <a href="#" data-activates="mobile-menu" class="button-collapse right"><i class="fa fa-bars black-text"></i></a>
+
+            <!--Content for large and medium screens-->
+            <div class="navbar-desktop">
+                
+                <!--Navbar Brand-->
+                <a class="navbar-brand" href="Index.aspx">
+                    <img src="img/logo.png" alt="" /></a>
+                <!--Links-->
+                <ul class="nav navbar-nav pull-right hidden-md-down text-uppercase ">
+
+                    <%if (Session["agent_id"] != null)
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" visible="false">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Pack & Channel</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="DisplayPackChannel.aspx">Packs</a>
+                            <a class="dropdown-item" href="DisplayChannel.aspx">Channels</a>
+                           
+                        </div>
+
+                    </li>
+                  
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Customer Corner</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="Register.aspx">Register</a>
+                            <a class="dropdown-item" href="Subscription.aspx">Subscription</a>
+                            <a class="dropdown-item" href="Order.aspx">Recharge</a>
+                            
+                        </div>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink3" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Reports</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="CustomerwiseReport.aspx">Customerwise Report</a>
+                            <a class="dropdown-item" href="DatewiseReport.aspx">Datewise Report</a>
+                             <a class="dropdown-item" href="TransactionReport.aspx">Transaction Report</a>
+                              <a class="dropdown-item" href="PackWise.aspx">Packwise Report</a>
+                            
+                        </div>
+
+                    </li>
+                  
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">My Profile</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="AgentProfile.aspx">My Profile</a>
+                            <a class="dropdown-item" href="ChangePassword.aspx">Change Password</a>
+
+                            <a class="dropdown-item" href="Logout.aspx">Logout</a>
+                        </div>
+
+                    </li>
+
+                    <%}
+                    else
+                       { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" visible="false">About</a>
+                    </li>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink11" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Pack & Channel</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="DisplayPackChannel.aspx">Packs</a>
+                            <a class="dropdown-item" href="DisplayChannel.aspx">Channels</a>
+                           
+                        </div>
+
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.aspx">Login</a>
+                    </li>
+
+
+
+                <%} %>
+
+                    <%-- <li class="nav-item">
+                            <a class="nav-link" href="Login.aspx">Login</a>
+                        </li>
+                     <li class="nav-item">
+                            <a class="nav-link" target="_blank" href="#!"><i class="fa fa-search fa-lg"></i></a>
+                        </li>--%>
+                </ul>
+              
+            </div>
+
+            <!-- Content for mobile devices-->
+            <div class="navbar-mobile">
+               
+
+                <ul class="side-nav" id="mobile-menu">
+                    <%if (Session["agent_id"] != null)
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" visible="false">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink111" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Pack & Channel</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="DisplayPackChannel.aspx">Packs</a>
+                            <a class="dropdown-item" href="DisplayChannel.aspx">Channels</a>
+                           
+                        </div>
+
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink12235" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Customer Corner</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="Register.aspx">Register</a>
+                            <a class="dropdown-item" href="Subscription.aspx">Subscription</a>
+                            <a class="dropdown-item" href="Order.aspx">Recharge</a>
+                           
+                        </div>
+
+                    </li>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink4" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Reports</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                             <a class="dropdown-item" href="CustomerwiseReport.aspx">Customerwise Report</a>
+                            <a class="dropdown-item" href="Subscription.aspx">Datewise Report</a>
+                               <a class="dropdown-item" href="TransactionReport.aspx">Transaction Report</a>
+                            <a class="dropdown-item" href="PackWise.aspx">Packwise Report</a>
+                            
+                        </div>
+
+                    </li>
+                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuL" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">My Profile</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">My Profile</a>
+                            <a class="dropdown-item" href="#">Update Profile</a>
+
+                            <a class="dropdown-item" href="Logout.aspx">Logout</a>
+                        </div>
+
+                    </li>
+
+                    <% }
+                    else
+                    { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Index.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" visible="false">About</a>
+                    </li>
+                   <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink12" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Pack & Channel</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="DisplayPackChannel.aspx">Packs</a>
+                            <a class="dropdown-item" href="DisplayChannel.aspx">Channels</a>
+                           
+                        </div>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.aspx">Login</a>
+                    </li>
+                    <%} %>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <%--<section id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="main_footer_area white-text p-b-3">
+                    <div class="col-md-3">
+                        <div class="single_f_widget p-t-3 wow fadeInUp">
+                            <img src="img/logo.png" alt="" />
+                            <div class="single_f_widget_text">
+                                <p>
+                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+                                        The point of using Lorem Ipsum is that it has a more-or-less normal.
+                                </p>
+                                <div class="socail_f_widget">
+                                    <a href="#!"><i class="fa fa-facebook"></i></a>
+                                    <a href="#!"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#!"><i class="fa fa-twitter"></i></a>
+                                    <a href="#!"><i class="fa fa-vimeo"></i></a>
+                                    <a href="#!"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="single_f_widget m-t-3 wow fadeInUp">
+                            <h4 class="text-lowercase">Some features</h4>
+                            <div class="single_f_widget_text f_reatures">
+                                <ul>
+                                    <li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet</li>
+                                    <li><i class="fa fa-check"></i>Aliquam tincidunt cons ectetuer</li>
+                                    <li><i class="fa fa-check"></i>Vestibulum auctor dapibus con</li>
+                                    <li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet auctor dapibus</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="single_f_widget m-t-3 wow fadeInUp">
+                            <h4 class="text-lowercase">Tags</h4>
+                            <div class="single_f_widget_text f_tags">
+                                <a href="#!">corporate</a>
+                                <a href="#!">agency</a>
+                                <a href="#!">portfolio</a>
+                                <a href="#!">blog</a>
+                                <a href="#!">elegant</a>
+                                <a href="#!">professional</a>
+                                <a href="#!">business</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="single_f_widget m-t-3 wow fadeInUp">
+                            <h4 class="text-lowercase">Flicker Posts</h4>
+                            <div class="single_f_widget_text f_flicker">
+                                <img src="img/flipcker1.jpg" alt="" />
+                                <img src="img/flipcker2.jpg" alt="" />
+                                <img src="img/flipcker3.jpg" alt="" />
+                                <img src="img/flipcker4.jpg" alt="" />
+                                <img src="img/flipcker3.jpg" alt="" />
+                                <img src="img/flipcker2.jpg" alt="" />
+                                <img src="img/flipcker4.jpg" alt="" />
+                                <img src="img/flipcker1.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_coppyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="copyright_text m-t-2 text-xs-center">
+                            <p class="wow zoomIn" data-wow-duration="1s">Made with <i class="fa fa-heart"></i>by <a target="_black" href="http://bootstrapthemes.co">Bootstrap Themes</a> 2016. All Rights Reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="socail_coppyright text-sm-right m-t-2 text-xs-center wow zoomIn">
+                            <a href="#!"><i class="fa fa-facebook"></i></a>
+                            <a href="#!"><i class="fa fa-twitter"></i></a>
+                            <a href="#!"><i class="fa fa-google-plus"></i></a>
+                            <a href="#!"><i class="fa fa-rss"></i></a>
+                            <a href="#!"><i class="fa fa-vimeo"></i></a>
+                            <a href="#!"><i class="fa fa-pinterest"></i></a>
+                            <a href="#!"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>--%>
+
+
+    <%-- </form>--%>
+    <!-- /Start your project here-->
+
+
+    <!-- SCRIPTS -->
+
+     <!-- JQuery -->
+        <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="js/tether.min.js"></script>
+
+
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+
+        <!-- Wow js -->
+        <script type="text/javascript" src="js/wow.min.js"></script>
+
+        <!-- Mixitup js -->
+        <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+
+        <!-- Magnific-popup js -->
+        <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+
+        <!-- accordion js -->
+        <script type="text/javascript" src="js/accordion.js"></script>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/materialize.js"></script>
+
+        <script>
+            $(".button-collapse").sideNav();
+        </script>
+
+    <!-- wow js active -->
+    <script type="text/javascript">
+        new WOW().init();
+        $("#navbarDropdownMenuLink1").hover(function () {
+            $(this).addClass("show");
+        });
+    </script>
+
+
+    <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+  $.validate({
+      lang: 'en'
+      
+      
+    });
+   
+
+</script>
+</body>
+</html>
